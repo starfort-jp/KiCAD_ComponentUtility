@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: starfort <starfort@nifty.com>\n"
+"Language-Team: Starfort <starfort@nifty.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"X-Generator: Poedit 1.8.8\n"
+
+#: tform1.bitbtn1.caption
+msgid "OPEN"
+msgstr "開く"
+
+#: tform1.bitbtn2.caption
+msgid "SAVE"
+msgstr "保存 "
+
+#: tform1.bitbtn3.caption
+msgid "-> CSV"
+msgstr "CSV へ変換"
+
+#: tform1.bitbtn4.caption
+msgid "-> LIB"
+msgstr "LIB へ変換"
+
+#: tform1.bitbtn5.caption
+msgid "Options"
+msgstr "オプション"
+
+#: tform1.bitbtn6.caption
+msgid "CLEAR"
+msgstr "消去"
+
+#: tform1.caption
+msgid "KiCAD_LIB<>CSV Converter"
+msgstr "KiCAD_LIB<>CSV コンバータ"
+
+#: tform2.bitbtn1.caption
+msgid "Default"
+msgstr "既定値"
+
+#: tform2.bitbtn2.caption
+msgid "Cancel"
+msgstr "取消"
+
+#: tform2.bitbtn3.caption
+msgid "OK"
+msgstr "OK"
+
+#: tform2.caption
+msgid "Setting Option"
+msgstr "オプションの設定"
+
+#: tform2.combobox1.text
+msgid "Japanese"
+msgstr "日本語"
+
+#: tform2.label1.caption
+msgid "Default Language"
+msgstr "既定の言語"
+
+#: tform2.label2.caption
+msgid "Text Color - Default"
+msgstr "テキスト色 - 既定値"
+
+#: tform2.label3.caption
+msgid "Text Color - Highlight"
+msgstr "テキスト色 - ハイライト"
+
