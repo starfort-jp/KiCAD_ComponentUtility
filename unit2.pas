@@ -5,26 +5,46 @@ unit Unit2;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, ColorBox, Buttons, IniFiles;
+  Classes, SysUtils, FileUtil, LvlGraphCtrl, Forms, Controls, Graphics, Dialogs,
+  ExtCtrls, StdCtrls, ColorBox, Buttons, Grids, FileCtrl, EditBtn, IniFiles;
 type
   { TForm2 }
   TForm2 = class(TForm)
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
-    ColorListBox1: TColorListBox;
-    ColorListBox2: TColorListBox;
+    ColorBox1: TColorBox;
+    ColorBox2: TColorBox;
+    ColorBox3: TColorBox;
+    ColorBox4: TColorBox;
+    ColorBox5: TColorBox;
+    ColorBox6: TColorBox;
+    ColorBox7: TColorBox;
+    ColorBox8: TColorBox;
+    ColorDialog1: TColorDialog;
     ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Shape1: TShape;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
+    procedure ColorBox8Change(Sender: TObject);
+    procedure ComboBox2Change(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
    private
     { private declarations }
+     xItemEtypeColors: Array [1..11] of TColor;
   public
     { public declarations }
   end;
@@ -35,7 +55,7 @@ var
 implementation
 
 uses
-  Unit1;
+  Unit1, Unit3;
 
 {$R *.lfm}
 
@@ -44,8 +64,11 @@ const
 
 { TForm2 }
 procedure TForm2.FormShow(Sender: TObject);
+var
+  n: Integer;
 begin
 //Initialize---
+//General
   //Set language
   if Unit1.xLANG = 'ja' then
   begin
@@ -56,16 +79,64 @@ begin
     ComboBox1.ItemIndex := 0;
   end;
   //Set Default Text Color
-  ColorListBox1.Selected := Unit1.xDefaultColor;
+  ColorBox1.Selected := Unit1.xDefaultColor;
   //Set Highlight Text Color
-  ColorListBox2.Selected := Unit1.xHiliteColor;
+  ColorBox2.Selected := Unit1.xHiliteColor;
+//Graphics
+  //Set Background Color
+  ColorBox3.Selected := Unit3.xBackgroundColor;
+  //Set Grid Line Color
+  ColorBox4.Selected := Unit3.xGridLineColor;
+  //Set Center Line Color
+  ColorBox5.Selected := Unit3.xCenterLineColor;
+  //Set Item Body Color
+  ColorBox6.Selected := Unit3.xItemBodyColor;
+  //Set Item Pin Color
+  ColorBox7.Selected := Unit3.xItemPinColor;
+  //Set Item Etype Color
+  for n := 1 to 11 do
+  begin
+    xItemEtypeColors[n] := Unit3.xItemEtypeColors[n];
+  end;
+  ComboBox2.ItemIndex := 0;
+  ColorBox8.Selected := Unit3.xItemEtypeColors[1];
+end;
+
+procedure TForm2.Shape1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  if ColorDialog1.Execute then
+  begin
+    ColorBox8.Selected := ColorDialog1.Color;
+    Shape1.Brush.Color := ColorDialog1.Color;
+    xItemEtypeColors[ComboBox2.ItemIndex + 1] := ColorDialog1.Color;
+  end;
 end;
 
 procedure TForm2.BitBtn1Click(Sender: TObject);
 begin
   ComboBox1.ItemIndex := 1;
-  ColorListBox1.Selected := clBlack;
-  ColorListBox2.Selected := clRed;
+  ColorBox1.Selected := clBlack;
+  ColorBox2.Selected := clRed;
+  ColorBox3.Selected := clWhite;
+  ColorBox4.Selected := clNavy;
+  ColorBox5.Selected := clBlue;
+  ColorBox6.Selected := clBlack;
+  ColorBox7.Selected := clBlack;
+  ComboBox1.ItemIndex := 1;
+  xItemEtypeColors[1] := clAqua;
+  xItemEtypeColors[2] := clLime;
+  xItemEtypeColors[3] := clYellow;
+  xItemEtypeColors[4] := clGreen;
+  xItemEtypeColors[5] := clBlack;
+  xItemEtypeColors[6] := clGray;
+  xItemEtypeColors[7] := clRed;
+  xItemEtypeColors[8] := clFuchsia;
+  xItemEtypeColors[9] := clTeal;
+  xItemEtypeColors[10] := clOlive;
+  xItemEtypeColors[11] := clSilver;
+  ColorBox8.Selected := xItemEtypeColors[1];
+  Shape1.Brush.Color := xItemEtypeColors[1];
 end;
 
 procedure TForm2.BitBtn2Click(Sender: TObject);
@@ -77,9 +148,15 @@ procedure TForm2.BitBtn3Click(Sender: TObject);
 var
   xIni: TINIFile;
   Language, DefaultColor, HiliteColor: String;
+  BackgroundColor, GridLineColor, CenterLineColor: String;
+  ItemBodyColor: String;
+  ItemPinColor: String;
+  ItemEtypeColors: Array [1..11] of String;
   xDir: String;
+  n: Integer;
 begin
 //Set Internal Values
+//General
   //Set language
   if ComboBox1.ItemIndex = 1 then
   begin
@@ -90,26 +167,85 @@ begin
     Unit1.xLANG := 'en';
   end;
   //Set Default Text Color
-  Unit1.xDefaultColor := ColorListBox1.Selected;
+  Unit1.xDefaultColor := ColorBox1.Selected;
   //Set Highlight Text Color
-  Unit1.xHiliteColor := ColorListBox2.Selected;
-  //Write to INI file
+  Unit1.xHiliteColor := ColorBox2.Selected;
+//Graphics
+  //Set Background Color
+  Unit3.xBackgroundColor := ColorBox3.Selected;
+  //Set Grid Line Color
+  Unit3.xGridLineColor := ColorBox4.Selected;
+  //Set Center Line Color
+  Unit3.xCenterLineColor := ColorBox5.Selected;
+  //Set Item Body Color
+  Unit3.xItemBodyColor := ColorBox6.Selected;
+  //Set Item Pin Color
+  Unit3.xItemPinColor := ColorBox7.Selected;
+  //Set Item Etype Color
+  for n := 1 to 11 do
+  begin
+    Unit3.xItemEtypeColors[n] := xItemEtypeColors[n];
+  end;
+//Write to INI file
   xDir := ExtractFilePath(Application.ExeName);
   xIni := TINIFile.Create(xDir + 'Preset.ini');  //Create object, specifying the ini file
   try  //Put writing INI file inside try/finally block to prevent memory leaks
     Language := Unit1.xLANG;
     DefaultColor := ColorToString(Unit1.xDefaultColor);
     HiliteColor := ColorToString(Unit1.xHiliteColor);
+    BackgroundColor := ColorToString(Unit3.xBackgroundColor);
+    GridLineColor := ColorToString(Unit3.xGridLineColor);
+    CenterLineColor := ColorToString(Unit3.xCenterLineColor);
+    ItemBodyColor := ColorToString(Unit3.xItemBodyColor);
+    ItemPinColor := ColorToString(Unit3.xItemPinColor);
+    ItemEtypeColors[1] := ColorToString(Unit3.xItemEtypeColors[1]);
+    ItemEtypeColors[2] := ColorToString(Unit3.xItemEtypeColors[2]);
+    ItemEtypeColors[3] := ColorToString(Unit3.xItemEtypeColors[3]);
+    ItemEtypeColors[4] := ColorToString(Unit3.xItemEtypeColors[4]);
+    ItemEtypeColors[5] := ColorToString(Unit3.xItemEtypeColors[5]);
+    ItemEtypeColors[6] := ColorToString(Unit3.xItemEtypeColors[6]);
+    ItemEtypeColors[7] := ColorToString(Unit3.xItemEtypeColors[7]);
+    ItemEtypeColors[8] := ColorToString(Unit3.xItemEtypeColors[8]);
+    ItemEtypeColors[9] := ColorToString(Unit3.xItemEtypeColors[9]);
+    ItemEtypeColors[10] := ColorToString(Unit3.xItemEtypeColors[10]);
+    ItemEtypeColors[11] := ColorToString(Unit3.xItemEtypeColors[11]);
     //Write values to INI file
     xIni.WriteString(xINIT_SECTION, 'Language', Language);
     xIni.WriteString(xINIT_SECTION, 'DefaultColor', DefaultColor);
     xIni.WriteString(xINIT_SECTION, 'HiliteColor', HiliteColor);
-    //Set parameter from read values
+    xIni.WriteString(xINIT_SECTION, 'BackgroundColor', BackgroundColor);
+    xIni.WriteString(xINIT_SECTION, 'GridLineColor', GridLineColor);
+    xIni.WriteString(xINIT_SECTION, 'CenterLineColor', CenterLineColor);
+    xIni.WriteString(xINIT_SECTION, 'ItemBodyColor', ItemBodyColor);
+    xIni.WriteString(xINIT_SECTION, 'ItemPinColor', ItemPinColor);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors1', ItemEtypeColors[1]);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors2', ItemEtypeColors[2]);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors3', ItemEtypeColors[3]);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors4', ItemEtypeColors[4]);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors5', ItemEtypeColors[5]);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors6', ItemEtypeColors[6]);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors7', ItemEtypeColors[7]);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors8', ItemEtypeColors[8]);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors9', ItemEtypeColors[9]);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors10', ItemEtypeColors[10]);
+    xIni.WriteString(xINIT_SECTION, 'ItemEtypeColors11', ItemEtypeColors[11]);
   finally
     xIni.Free;  // After INI file was used, must release to prevent memory leaks
   end;
 //---
   Close;
+end;
+
+procedure TForm2.ColorBox8Change(Sender: TObject);
+begin
+  Shape1.Brush.Color := ColorBox8.Selected;
+  xItemEtypeColors[ComboBox2.ItemIndex + 1] := ColorBox8.Selected;
+end;
+
+procedure TForm2.ComboBox2Change(Sender: TObject);
+begin
+  Shape1.Brush.Color := xItemEtypeColors[ComboBox2.ItemIndex + 1];
+  ColorBox8.Selected := xItemEtypeColors[ComboBox2.ItemIndex + 1];
 end;
 
 end.

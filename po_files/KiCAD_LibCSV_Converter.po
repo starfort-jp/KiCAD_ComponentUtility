@@ -35,6 +35,10 @@ msgstr "オプション"
 msgid "CLEAR"
 msgstr "消去"
 
+#: tform1.bitbtn7.caption
+msgid "VIEW"
+msgstr "図形表示"
+
 #: tform1.caption
 msgid "KiCAD_LIB<>CSV Converter"
 msgstr "KiCAD_LIB<>CSV コンバータ"
@@ -59,6 +63,18 @@ msgstr "オプションの設定"
 msgid "Japanese"
 msgstr "日本語"
 
+#: tform2.combobox2.text
+msgid "INPUT"
+msgstr "入力"
+
+#: tform2.groupbox1.caption
+msgid "GENERAL"
+msgstr "一般設定"
+
+#: tform2.groupbox2.caption
+msgid "GRAPHICS"
+msgstr "グラフィック"
+
 #: tform2.label1.caption
 msgid "Default Language"
 msgstr "既定の言語"
@@ -70,4 +86,72 @@ msgstr "テキスト色 - 既定値"
 #: tform2.label3.caption
 msgid "Text Color - Highlight"
 msgstr "テキスト色 - ハイライト"
+
+#: tform2.label4.caption
+msgid "Background Color"
+msgstr "背景色"
+
+#: tform2.label5.caption
+msgid "Grid Color"
+msgstr "グリッド線の色"
+
+#: tform2.label6.caption
+msgid "Center Line Color"
+msgstr "中心線の色"
+
+#: tform2.label7.caption
+msgid "Item Body Color"
+msgstr "部品の外形線の色"
+
+#: tform2.label8.caption
+msgid "Item Pin Color"
+msgstr "部品のピンの色"
+
+#: tform3.caption
+msgid "Graphic Display"
+msgstr "グラフィック表示"
+
+#: tform3.menuitem1.caption
+msgid "Reset Size"
+msgstr "サイズをリセット"
+
+#: tform3.menuitem10.caption
+msgid "LQFP208"
+msgstr "LQFP208"
+
+#: tform3.menuitem2.caption
+msgid "-"
+msgstr "-"
+
+#: tform3.menuitem3.caption
+msgid "Create"
+msgstr "作成"
+
+#: tform3.menuitem4.caption
+msgid "LQFP44"
+msgstr "LQFP44"
+
+#: tform3.menuitem5.caption
+msgid "LQFP48"
+msgstr "LQFP48"
+
+#: tform3.menuitem6.caption
+msgid "LQFP64"
+msgstr "LQFP64"
+
+#: tform3.menuitem7.caption
+msgid "LQFP80"
+msgstr "LQFP80"
+
+#: tform3.menuitem8.caption
+msgid "LQFP100"
+msgstr "LQFP100"
+
+#: tform3.menuitem9.caption
+msgid "LQFP144"
+msgstr "LQFP144"
+
+#: tform3.panel1.caption
+msgid "0"
+msgstr "0"
 

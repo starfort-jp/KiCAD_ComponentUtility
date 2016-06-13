@@ -1,0 +1,118 @@
+object Form3: TForm3
+  Left = 439
+  Height = 1002
+  Top = 211
+  Width = 1279
+  Caption = 'Graphic Display'
+  ClientHeight = 1002
+  ClientWidth = 1279
+  OnClose = FormClose
+  OnShow = FormShow
+  LCLVersion = '1.6.0.4'
+  object Panel1: TPanel
+    Left = 0
+    Height = 1002
+    Top = 0
+    Width = 1279
+    Align = alClient
+    BevelOuter = bvLowered
+    Caption = '0'
+    ClientHeight = 1002
+    ClientWidth = 1279
+    TabOrder = 0
+    object PairSplitter1: TPairSplitter
+      Left = 1
+      Height = 1000
+      Top = 1
+      Width = 1277
+      Align = alClient
+      Position = 272
+      object PairSplitterSide1: TPairSplitterSide
+        Cursor = crArrow
+        Left = 0
+        Height = 1000
+        Top = 0
+        Width = 272
+        ClientWidth = 272
+        ClientHeight = 1000
+        object StringGrid1: TStringGrid
+          Left = 0
+          Height = 1000
+          Top = 0
+          Width = 272
+          Align = alClient
+          AutoFillColumns = True
+          ColCount = 3
+          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+          RowCount = 44
+          TabOrder = 0
+          ColWidths = (
+            64
+            102
+            102
+          )
+        end
+      end
+      object PairSplitterSide2: TPairSplitterSide
+        Cursor = crArrow
+        Left = 277
+        Height = 1000
+        Top = 0
+        Width = 1000
+        ClientWidth = 1000
+        ClientHeight = 1000
+        object Image1: TImage
+          Left = 0
+          Height = 1000
+          Top = 0
+          Width = 1000
+          Align = alClient
+          PopupMenu = PopupMenu1
+          Stretch = True
+        end
+      end
+    end
+  end
+  object PopupMenu1: TPopupMenu
+    left = 16
+    top = 16
+    object MenuItem1: TMenuItem
+      Caption = 'Reset Size'
+      OnClick = MenuItem1Click
+    end
+    object MenuItem2: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem3: TMenuItem
+      Caption = 'Create'
+      object MenuItem4: TMenuItem
+        Caption = 'LQFP44'
+        OnClick = MenuItem4Click
+      end
+      object MenuItem5: TMenuItem
+        Caption = 'LQFP48'
+        OnClick = MenuItem5Click
+      end
+      object MenuItem6: TMenuItem
+        Caption = 'LQFP64'
+        OnClick = MenuItem6Click
+      end
+      object MenuItem7: TMenuItem
+        Caption = 'LQFP80'
+        OnClick = MenuItem7Click
+      end
+      object MenuItem8: TMenuItem
+        Caption = 'LQFP100'
+        OnClick = MenuItem8Click
+      end
+      object MenuItem9: TMenuItem
+        Caption = 'LQFP144'
+        OnClick = MenuItem9Click
+      end
+      object MenuItem10: TMenuItem
+        Caption = 'LQFP208'
+        OnClick = MenuItem10Click
+      end
+    end
+  end
+end

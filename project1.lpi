@@ -20,7 +20,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="22"/>
+      <BuildNr Value="23"/>
       <Attributes pvaDebug="True"/>
       <StringTable Comments="for Debugging" CompanyName="Kikyo Shoji Ltd, Co." FileDescription="N/A" InternalName="KiCAD_LibUtil" LegalCopyright="(c)Starfort, 2015-2016" LegalTrademarks="Starfort (TM)" OriginalFilename="N/A" ProductName="T.B.D." ProductVersion="1.0.0.0"/>
     </VersionInfo>
@@ -40,15 +40,24 @@
         </UserOverrides>
       </environment>
     </RunParams>
-    <RequiredPackages Count="2">
+    <RequiredPackages Count="5">
       <Item1>
-        <PackageName Value="richmemopackage"/>
+        <PackageName Value="csvdocument_package"/>
       </Item1>
       <Item2>
-        <PackageName Value="LCL"/>
+        <PackageName Value="MemDSLaz"/>
       </Item2>
+      <Item3>
+        <PackageName Value="LazControls"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="richmemopackage"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="LCL"/>
+      </Item5>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="4">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -69,6 +78,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit2"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="unit3.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form3"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit3"/>
+      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -81,10 +98,26 @@
       <IncludeFiles Value="$(ProjOutDir)"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <IncludeAssertionCode Value="True"/>
+      </SyntaxOptions>
+    </Parsing>
+    <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
+      <Checks>
+        <IOChecks Value="True"/>
+        <RangeChecks Value="True"/>
+        <OverflowChecks Value="True"/>
+        <StackChecks Value="True"/>
+      </Checks>
+      <VerifyObjMethodCallValidity Value="True"/>
+    </CodeGeneration>
     <Linking>
       <Debugging>
         <GenerateDebugInfo Value="False"/>
       </Debugging>
+      <LinkSmart Value="True"/>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>

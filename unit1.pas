@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons, ExtCtrls, RichMemo, lazutf8, Unit2;//DefaultTranslator, LCLTranslator;
+  Buttons, ExtCtrls, Grids, RichMemo, lazutf8, Unit2, Unit3, memds, CSVDocument;//DefaultTranslator, LCLTranslator;
 type
   { TForm1 }
   TLineItem = (lxStrings, lxCSV, lxLIB, lxMemo);
@@ -17,16 +17,20 @@ type
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
     BitBtn6: TBitBtn;
+    BitBtn7: TBitBtn;
     Edit1: TEdit;
+    MemDataset1: TMemDataset;
     OpenDialog1: TOpenDialog;
     RichMemo1: TRichMemo;
     SaveDialog1: TSaveDialog;
+    StringGrid1: TStringGrid;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
     procedure BitBtn5Click(Sender: TObject);
     procedure BitBtn6Click(Sender: TObject);
+    procedure BitBtn7Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
@@ -41,6 +45,8 @@ type
     procedure DisplayRichMemo(xLineItem: TLineItem);
   public
     { public declarations }
+    procedure ConvertToCSV;
+    procedure ConvertToLIB;
   end;
 
 var
@@ -58,6 +64,7 @@ procedure TForm1.FormShow(Sender: TObject);
 var
   n: Integer;
 begin
+  StringGrid1.Visible := False;
   xStringList := TStringList.Create; //Needed when using stringlist class
   xCSVStringList := TStringList.Create;  //Needed when using stringlist class
   xLIBStringList := TStringList.Create;  //Needed when using stringlist class
@@ -210,73 +217,7 @@ begin
 //---
 end;
 
-procedure TForm1.BitBtn1Click(Sender: TObject);
-begin
-//Load from file
-  if FileExists(Edit1.Text) then
-  begin
-    OpenDialog1.FileName := Edit1.Text;
-    OpenDialog1.InitialDir := ExtractFilePath(Edit1.Text);
-    OpenDialog1.DefaultExt := ExtractFileExt(Edit1.Text);
-    xExt := ExtractFileExt(Edit1.Text);
-  end
-  else
-  begin
-    OpenDialog1.InitialDir := GetCurrentDir;
-    xExt := '';
-  end;
-  if OpenDialog1.Execute then
-  begin
-    Edit1.Text := OpenDialog1.FileName;
-    xExt := ExtractFileExt(Edit1.Text);
-    if FileExists(Edit1.Text) then
-    begin
-      xStringList.Clear;
-      try  // Embed block to handle errors gracefully
-        xStringList.LoadFromFile(Edit1.Text);  // Load the contents of the textfile completely in memory
-      except  // If error, show message with reason
-        on xErrorIO: EInOutError do
-        begin
-          ShowMessage('File handling error occurred. Details: '+ xErrorIO.Message);
-        end;
-      end;
-      MarkLines(lxStrings);  //Mark keeping read lines as 'False'
-      DisplayRichMemo(lxStrings);  //Display read strings
-    end;
-  end;
-end;
-
-procedure TForm1.BitBtn2Click(Sender: TObject);
-var
-  xLineNumber: Integer;
-  xFileName: String;
-begin
-//Save to file
-  xLineNumber := xMemoStringList.Count;
-  if xLineNumber > 0 then
-  begin
-    xFileName := ChangeFileExt(Edit1.Text, xExt);
-    SaveDialog1.FileName := xFileName;
-    if SaveDialog1.Execute then
-    begin
-      Edit1.Text := SaveDialog1.FileName;
-      try  // Embed block to handle errors gracefully
-        xMemoStringList.SaveToFile(Edit1.Text);  // Save displayed contents to disk
-      except  // If error, show message with reason
-        on xErrorIO: EInOutError do
-        begin
-          ShowMessage('File handling error occurred. Details: '+ xErrorIO.Message);
-        end;
-      end;
-    end;
-  end
-  else
-  begin
-    ShowMessage('Warning: Nothing to save.');
-  end;
-end;
-
-procedure TForm1.BitBtn3Click(Sender: TObject);
+procedure TForm1.ConvertToCSV;
 var
   xLineNumber, xLp, xChNumber, xCp: Integer;
   xOldString, xNewString, xString, xCh, xPre, xSuf: String;
@@ -325,7 +266,7 @@ begin
   DisplayRichMemo(lxCSV);  //Display CSV strings
 end;
 
-procedure TForm1.BitBtn4Click(Sender: TObject);
+procedure TForm1.ConvertToLIB;
 var
   xLineNumber, xLp, xChNumber, xCp: Integer;
   xOldString, xNewString, xString, xCh: String;
@@ -382,6 +323,99 @@ begin
   DisplayRichMemo(lxLIB);  //Display LIB strings
 end;
 
+procedure TForm1.BitBtn1Click(Sender: TObject);
+begin
+//Load from file
+  if FileExists(Edit1.Text) then
+  begin
+    OpenDialog1.FileName := Edit1.Text;
+    OpenDialog1.InitialDir := ExtractFilePath(Edit1.Text);
+    OpenDialog1.DefaultExt := ExtractFileExt(Edit1.Text);
+    xExt := ExtractFileExt(Edit1.Text);
+  end
+  else
+  begin
+    OpenDialog1.InitialDir := GetCurrentDir;
+    xExt := '';
+  end;
+  if OpenDialog1.Execute then
+  begin
+    Edit1.Text := OpenDialog1.FileName;
+    xExt := ExtractFileExt(Edit1.Text);
+    if FileExists(Edit1.Text) then
+    begin
+      xStringList.Clear;
+      try  // Embed block to handle errors gracefully
+        xStringList.LoadFromFile(Edit1.Text);  // Load the contents of the textfile completely in memory
+      except  // If error, show message with reason
+        on xErrorIO: EInOutError do
+        begin
+          ShowMessage('File handling error occurred. Details: '+ xErrorIO.Message);
+        end;
+      end;
+      MarkLines(lxStrings);  //Mark keeping read lines as 'False'
+      DisplayRichMemo(lxStrings);  //Display read strings
+    end;
+  end;
+end;
+
+procedure TForm1.BitBtn2Click(Sender: TObject);
+var
+  xLineNumber: Integer;
+  xFileName, yExt: String;
+begin
+//Save to file
+  xLineNumber := xMemoStringList.Count;
+  if xLineNumber > 0 then
+  begin
+    xFileName := ChangeFileExt(Edit1.Text, xExt);
+    SaveDialog1.FileName := xFileName;
+    if SaveDialog1.Execute then
+    begin
+      Edit1.Text := SaveDialog1.FileName;
+      yExt := ExtractFileExt(Edit1.Text);
+      if yExt = '.csv' then
+      begin
+        ConvertToCSV;
+      end;
+      if yExt = '.lib' then
+      begin
+        ConvertToLIB;
+      end;
+      try  // Embed block to handle errors gracefully
+        xMemoStringList.SaveToFile(Edit1.Text);  // Save displayed contents to disk
+      except  // If error, show message with reason
+        on xErrorIO: EInOutError do
+        begin
+          ShowMessage('File handling error occurred. Details: '+ xErrorIO.Message);
+        end;
+      end;
+    end;
+  end
+  else
+  begin
+    ShowMessage('Warning: Nothing to save.');
+  end;
+end;
+
+procedure TForm1.BitBtn3Click(Sender: TObject);
+var
+  xLineNumber, xLp, xChNumber, xCp: Integer;
+  xOldString, xNewString, xString, xCh, xPre, xSuf: String;
+  xException: Boolean;
+begin
+  ConvertToCSV;
+end;
+
+procedure TForm1.BitBtn4Click(Sender: TObject);
+var
+  xLineNumber, xLp, xChNumber, xCp: Integer;
+  xOldString, xNewString, xString, xCh: String;
+  xException: Boolean;
+begin
+  ConvertToLIB;
+end;
+
 procedure TForm1.BitBtn5Click(Sender: TObject);
 begin
   Form2.Show;
@@ -392,6 +426,151 @@ begin
   xStringList.Clear;
   MarkLines(lxStrings);  //Mark keeping read lines as 'False'
   DisplayRichMemo(lxStrings);  //Display read strings
+end;
+
+procedure TForm1.BitBtn7Click(Sender: TObject);
+var
+  n, m, xMaxRow, xStart, xEnd: Integer;
+  xText: String;
+  xEnable: Boolean;
+  xParser: TCSVParser;
+  xRowOffset: Integer;
+  xMemoryStream: TMemoryStream;
+begin
+  ConvertToCSV;
+//---Fill StringGrid using CSV Parser
+  StringGrid1.Visible := True;
+  StringGrid1.BeginUpdate;
+  StringGrid1.Clear;  // Reset the grid:
+  xMemoryStream := TMemoryStream.Create;
+  xParser := TCSVParser.Create;
+  xMemoStringList.SaveToStream(xMemoryStream);
+  try
+    xParser.Delimiter := ',';
+    xParser.SetSource(xMemoryStream);
+    while xParser.ParseNextCell do
+    begin
+     if StringGrid1.Columns.Enabled then
+      begin
+        if StringGrid1.Columns.VisibleCount < xParser.CurrentCol + 1 then
+        begin
+          StringGrid1.Columns.Add;
+        end;
+      end
+      else
+      begin
+        if StringGrid1.ColCount < xParser.CurrentCol + 1 then
+        begin
+          StringGrid1.ColCount := xParser.CurrentCol + 1;
+        end;
+      end;
+       if StringGrid1.RowCount < xParser.CurrentRow + 1 then
+      begin
+        StringGrid1.RowCount := xParser.CurrentRow + 1;
+      end;
+      StringGrid1.Cells[xParser.CurrentCol, xParser.CurrentRow] := xParser.CurrentCellText; // Actual data import into grid cell, minding fixed rows and header
+    end;
+    if StringGrid1.Columns.Enabled then      // Now we know the widest row in the import, we can snip the grid's columns if necessary.
+    begin
+      while StringGrid1.Columns.VisibleCount > xParser.MaxColCount do
+      begin
+        StringGrid1.Columns.Delete(StringGrid1.Columns.Count - 1);
+      end;
+    end
+    else
+    begin
+      if StringGrid1.ColCount > xParser.MaxColCount then
+      begin
+        StringGrid1.ColCount := xParser.MaxColCount;
+      end;
+    end;
+  finally
+    xParser.Free;
+    xMemoryStream.Free;
+    StringGrid1.EndUpdate;
+  end;
+//---Fill Form3 StringGrid
+  xStart := 0;
+  xEnd := 0;
+  for n := 0 to StringGrid1.RowCount  - 1 do
+  begin
+    xText := StringGrid1.Cells[0, n];
+    if xText = 'DRAW' then
+    begin
+      xStart := n;
+    end;
+    if xText = 'ENDDRAW' then
+    begin
+      xEnd := n;
+    end;
+  end;
+  xMaxRow := xEnd - xStart - 2;
+  if xMaxRow < 0 then
+  begin
+    xMaxRow := 0;
+  end;
+  Form3.Show;
+  Form3.StringGrid1.AutoSizeColumns;
+  Form3.StringGrid1.Update;
+  Form3.StringGrid1.Clear;
+  Form3.StringGrid1.RowCount := xMaxRow + 1;
+  Form3.StringGrid1.Cells[0, 0] := 'No.';
+  Form3.StringGrid1.Cells[1, 0] := 'Name';
+  Form3.StringGrid1.Cells[2, 0] := 'Type';
+  for n := 1 to xMaxRow do
+  begin
+    Form3.StringGrid1.Cells[0, n] := IntToStr(n);
+    m := StrToInt(StringGrid1.Cells[2, xStart + 1 + n]);
+    Form3.StringGrid1.Cells[1, m] := StringGrid1.Cells[1, xStart + 1 + n];
+    Form3.StringGrid1.Cells[2, m] := StringGrid1.Cells[StringGrid1.ColCount - 1, xStart + 1 + n];
+  end;
+//---Draw Test
+  Form3.xPins := xMaxRow;
+  Form3.CreateDevice;
+  //---Pin
+  Form3.Image1.Canvas.Pen.Color := clBlack;
+  Form3.Image1.Canvas.Pen.Style := psSolid;
+  Form3.Image1.Canvas.Pen.Width := 4;
+  for n := 1 to xMaxRow do
+  begin
+    xText := Form3.StringGrid1.Cells[2, n];
+    case xText of
+    'I': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[1];
+         end;
+    'O': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[2];
+         end;
+    'B': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[3];
+         end;
+    'T': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[4];
+         end;
+    'P': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[5];
+         end;
+    'U': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[6];
+         end;
+    'W': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[7];
+         end;
+    'w': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[8];
+         end;
+    'C': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[9];
+         end;
+    'E': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[10];
+         end;
+    'N': begin
+           Form3.Image1.Canvas.Pen.Color := Unit3.xItemEtypeColors[11];
+         end;
+    end;
+    Form3.DrawPin(n);
+  end;
 end;
 
 end.
