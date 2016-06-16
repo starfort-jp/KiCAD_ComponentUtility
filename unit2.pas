@@ -1,3 +1,11 @@
+//------------------------------------------------------------------------------
+// title      : KiCad_LIB<>CSV Converter
+// revision   : 0.3.1.25
+// issue date : Jun.17, 2016
+// author     : Starfort, (c) 2015-2016
+// e-mail     : starfort@nifty.com
+//------------------------------------------------------------------------------
+
 unit Unit2;
 
 {$mode objfpc}{$H+}
@@ -40,10 +48,12 @@ type
     procedure BitBtn3Click(Sender: TObject);
     procedure ColorBox8Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
    private
     { private declarations }
+     xFileStringList: TStringList;
      xItemEtypeColors: Array [1..11] of TColor;
   public
     { public declarations }
@@ -55,7 +65,7 @@ var
 implementation
 
 uses
-  Unit1, Unit3;
+  Unit1, Unit3, Unit4;
 
 {$R *.lfm}
 
@@ -66,17 +76,45 @@ const
 procedure TForm2.FormShow(Sender: TObject);
 var
   n: Integer;
+  xSearchDir, xCountryName, xCountryCode: String;
+  xRec: TSearchRec;
+  xCount: integer;
 begin
 //Initialize---
+  xFileStringList := TStringList.Create;
+  xSearchDir := ExtractFilePath(Application.ExeName) + 'locale\';
+  xCount :=0;
+  if FindFirst(xSearchDir + '*.*', faAnyFile, xRec) = 0 then
+  try
+    repeat
+      if not((xRec.Attr and faDirectory = 0)) and
+             (xRec.Name <> '.') and (xRec.Name <> '..') then
+      begin
+        xFileStringList.Add(xRec.Name);
+        Inc(xCount);
+      end;
+    until (FindNext(xRec) <> 0);
+  finally
+    FindClose(xRec);
+  end;
 //General
   //Set language
-  if Unit1.xLANG = 'ja' then
+  ComboBox1.Clear;
+  for n := 1 to xCount do
   begin
-    ComboBox1.ItemIndex := 1;
+    xCountryName := Unit4.GetCountryString(xFileStringList[n - 1]);
+    if xCountryName <> '' then
+    begin
+      xCountryCode := Unit4.GetCodeString(xCountryName);
+      ComboBox1.Items.Add(xCountryName);
+    end;
   end;
-  if Unit1.xLANG = 'en' then
+  for n := 0 to ComboBox1.Items.Count - 1 do
   begin
-    ComboBox1.ItemIndex := 0;
+    if Unit4.GetCodeString(ComboBox1.Items[n]) = Unit1.xLANG then
+    begin
+      ComboBox1.ItemIndex := n;
+    end;
   end;
   //Set Default Text Color
   ColorBox1.Selected := Unit1.xDefaultColor;
@@ -102,6 +140,11 @@ begin
   ColorBox8.Selected := Unit3.xItemEtypeColors[1];
 end;
 
+procedure TForm2.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  xFileStringList.Free; //Release memory used by stringlist instance
+end;
+
 procedure TForm2.Shape1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
@@ -114,8 +157,17 @@ begin
 end;
 
 procedure TForm2.BitBtn1Click(Sender: TObject);
+var
+  n: Integer;
 begin
-  ComboBox1.ItemIndex := 1;
+  ComboBox1.ItemIndex := 0;
+  for n := 0 to ComboBox1.Items.Count - 1 do
+  begin
+    if Unit4.GetCodeString(ComboBox1.Items[n]) = 'en' then
+    begin
+      ComboBox1.ItemIndex := n;
+    end;
+  end;
   ColorBox1.Selected := clBlack;
   ColorBox2.Selected := clRed;
   ColorBox3.Selected := clWhite;
@@ -123,7 +175,7 @@ begin
   ColorBox5.Selected := clBlue;
   ColorBox6.Selected := clBlack;
   ColorBox7.Selected := clBlack;
-  ComboBox1.ItemIndex := 1;
+  ComboBox2.ItemIndex := 0;
   xItemEtypeColors[1] := clAqua;
   xItemEtypeColors[2] := clLime;
   xItemEtypeColors[3] := clYellow;
@@ -158,14 +210,7 @@ begin
 //Set Internal Values
 //General
   //Set language
-  if ComboBox1.ItemIndex = 1 then
-  begin
-    Unit1.xLANG := 'ja';
-  end;
-  if ComboBox1.ItemIndex = 0 then
-  begin
-    Unit1.xLANG := 'en';
-  end;
+  Unit1.xLANG := Unit4.GetCodeString(ComboBox1.Items[ComboBox1.ItemIndex]);
   //Set Default Text Color
   Unit1.xDefaultColor := ColorBox1.Selected;
   //Set Highlight Text Color

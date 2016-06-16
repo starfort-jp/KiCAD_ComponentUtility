@@ -1,11 +1,12 @@
 object Form2: TForm2
   Left = 774
   Height = 423
-  Top = 126
+  Top = 129
   Width = 265
   Caption = 'Setting Option'
   ClientHeight = 423
   ClientWidth = 265
+  OnClose = FormClose
   OnShow = FormShow
   LCLVersion = '1.6.0.4'
   object BitBtn1: TBitBtn
@@ -74,13 +75,7 @@ object Form2: TForm2
       Top = 8
       Width = 100
       ItemHeight = 15
-      ItemIndex = 1
-      Items.Strings = (
-        'English'
-        'Japanese'
-      )
       TabOrder = 0
-      Text = 'Japanese'
     end
     object ColorBox1: TColorBox
       Left = 136
@@ -151,7 +146,7 @@ object Form2: TForm2
     end
     object ColorBox3: TColorBox
       Left = 136
-      Height = 26
+      Height = 24
       Top = 8
       Width = 100
       ItemHeight = 18
@@ -159,7 +154,7 @@ object Form2: TForm2
     end
     object ColorBox4: TColorBox
       Left = 136
-      Height = 26
+      Height = 24
       Top = 40
       Width = 100
       ItemHeight = 18
@@ -167,7 +162,7 @@ object Form2: TForm2
     end
     object ColorBox5: TColorBox
       Left = 136
-      Height = 26
+      Height = 24
       Top = 72
       Width = 100
       ItemHeight = 18
@@ -175,7 +170,7 @@ object Form2: TForm2
     end
     object ColorBox6: TColorBox
       Left = 136
-      Height = 26
+      Height = 24
       Top = 104
       Width = 100
       ItemHeight = 18
@@ -183,7 +178,7 @@ object Form2: TForm2
     end
     object ColorBox7: TColorBox
       Left = 136
-      Height = 26
+      Height = 24
       Top = 136
       Width = 100
       ItemHeight = 18
@@ -215,7 +210,7 @@ object Form2: TForm2
     end
     object ColorBox8: TColorBox
       Left = 136
-      Height = 26
+      Height = 24
       Top = 176
       Width = 100
       ItemHeight = 18

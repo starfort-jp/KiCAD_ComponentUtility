@@ -6,7 +6,7 @@
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="KiCAD_Lib&lt;>CSV Converter"/>
+      <Title Value="KiCad_Lib&lt;>CSV Converter"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
@@ -20,7 +20,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="22"/>
+      <BuildNr Value="74"/>
       <Attributes pvaDebug="True"/>
       <StringTable Comments="for Debugging" CompanyName="Kikyo Shoji Ltd, Co." FileDescription="N/A" InternalName="KiCAD_LibUtil" LegalCopyright="(c)Starfort, 2015-2016" LegalTrademarks="Starfort (TM)" OriginalFilename="N/A" ProductName="T.B.D." ProductVersion="1.0.0.0"/>
     </VersionInfo>
@@ -57,7 +57,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="4">
+    <Units Count="7">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -86,6 +86,27 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit3"/>
       </Unit3>
+      <Unit4>
+        <Filename Value="unit4.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Unit4"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="unit5.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form5"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit5"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="unit6.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form6"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit6"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -111,12 +132,8 @@
         <OverflowChecks Value="True"/>
         <StackChecks Value="True"/>
       </Checks>
-      <VerifyObjMethodCallValidity Value="True"/>
     </CodeGeneration>
     <Linking>
-      <Debugging>
-        <GenerateDebugInfo Value="False"/>
-      </Debugging>
       <LinkSmart Value="True"/>
       <Options>
         <Win32>

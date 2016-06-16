@@ -1,3 +1,11 @@
+//------------------------------------------------------------------------------
+// title      : KiCad_LIB<>CSV Converter
+// revision   : 0.3.1.25
+// issue date : Jun.17, 2016
+// author     : Starfort, (c) 2015-2016
+// e-mail     : starfort@nifty.com
+//------------------------------------------------------------------------------
+
 program project1;
 
 {$mode objfpc}{$H+}
@@ -8,7 +16,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, Unit1, classes, sysutils, IniFiles, Graphics, LCLTranslator,
-  csvdocument_package, lazcontrols, memdslaz, Unit2, Unit3
+  csvdocument_package, lazcontrols, memdslaz, Unit2, Unit3, Unit4, Unit5, Unit6
   { you can add units after this };
 
 {$R *.res}
@@ -74,7 +82,7 @@ begin
     xIni.Free;  // After INI file was used, must release to prevent memory leaks
   end;
 //---
-  Application.Title:='KiCAD_Lib<>CSV Converter';
+  Application.Title:='KiCad_Lib<>CSV Converter';
   RequireDerivedFormResource:=True;
   Application.Initialize;
   SetDefaultLang('', '', false);
@@ -82,6 +90,8 @@ begin
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TForm5, Form5);
+  Application.CreateForm(TForm6, Form6);
   Application.Run;
 end.
 

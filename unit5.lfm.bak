@@ -1,0 +1,30 @@
+object Form5: TForm5
+  Left = 256
+  Height = 86
+  Top = 168
+  Width = 371
+  Caption = 'Warning'
+  ClientHeight = 86
+  ClientWidth = 371
+  LCLVersion = '1.6.0.4'
+  object BitBtn1: TBitBtn
+    Left = 152
+    Height = 30
+    Top = 48
+    Width = 75
+    Default = True
+    DefaultCaption = True
+    Kind = bkOK
+    ModalResult = 1
+    OnClick = BitBtn1Click
+    TabOrder = 0
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 15
+    Top = 16
+    Width = 34
+    Caption = 'Label1'
+    ParentColor = False
+  end
+end

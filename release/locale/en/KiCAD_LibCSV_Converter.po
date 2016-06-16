@@ -1,0 +1,186 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: starfort <starfort@nifty.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"X-Generator: Poedit 1.8.8\n"
+
+#: tform1.bitbtn1.caption
+msgid "OPEN"
+msgstr ""
+
+#: tform1.bitbtn2.caption
+msgid "SAVE"
+msgstr ""
+
+#: tform1.bitbtn3.caption
+msgid "-> CSV"
+msgstr ""
+
+#: tform1.bitbtn4.caption
+msgid "-> LIB"
+msgstr ""
+
+#: tform1.bitbtn5.caption
+msgid "Options"
+msgstr ""
+
+#: tform1.bitbtn6.caption
+msgid "CLEAR"
+msgstr ""
+
+#: tform1.bitbtn7.caption
+msgid "VIEW"
+msgstr ""
+
+#: tform1.caption
+msgid "KiCad_LIB<>CSV Converter"
+msgstr ""
+
+#: tform2.bitbtn1.caption
+msgid "Default"
+msgstr ""
+
+#: tform2.bitbtn2.caption
+msgid "Cancel"
+msgstr ""
+
+#: tform2.bitbtn3.caption
+msgid "OK"
+msgstr ""
+
+#: tform2.caption
+msgid "Setting Option"
+msgstr ""
+
+#: tform2.combobox2.text
+msgid "INPUT"
+msgstr ""
+
+#: tform2.groupbox1.caption
+msgid "GENERAL"
+msgstr ""
+
+#: tform2.groupbox2.caption
+msgid "GRAPHICS"
+msgstr ""
+
+#: tform2.label1.caption
+msgid "Default Language"
+msgstr ""
+
+#: tform2.label2.caption
+msgid "Text Color - Default"
+msgstr ""
+
+#: tform2.label3.caption
+msgid "Text Color - Highlight"
+msgstr ""
+
+#: tform2.label4.caption
+msgid "Background Color"
+msgstr ""
+
+#: tform2.label5.caption
+msgid "Grid Color"
+msgstr ""
+
+#: tform2.label6.caption
+msgid "Center Line Color"
+msgstr ""
+
+#: tform2.label7.caption
+msgid "Item Body Color"
+msgstr ""
+
+#: tform2.label8.caption
+msgid "Item Pin Color"
+msgstr ""
+
+#: tform3.caption
+msgid "Graphic Display"
+msgstr ""
+
+#: tform3.menuitem1.caption
+msgid "Reset Size"
+msgstr ""
+
+#: tform3.menuitem10.caption
+msgid "LQFP208"
+msgstr ""
+
+#: tform3.menuitem11.caption
+msgctxt "TFORM3.MENUITEM11.CAPTION"
+msgid "-"
+msgstr ""
+
+#: tform3.menuitem12.caption
+msgid "Set Name"
+msgstr ""
+
+#: tform3.menuitem2.caption
+msgctxt "tform3.menuitem2.caption"
+msgid "-"
+msgstr ""
+
+#: tform3.menuitem3.caption
+msgid "Create"
+msgstr ""
+
+#: tform3.menuitem4.caption
+msgid "LQFP44"
+msgstr ""
+
+#: tform3.menuitem5.caption
+msgid "LQFP48"
+msgstr ""
+
+#: tform3.menuitem6.caption
+msgid "LQFP64"
+msgstr ""
+
+#: tform3.menuitem7.caption
+msgid "LQFP80"
+msgstr ""
+
+#: tform3.menuitem8.caption
+msgid "LQFP100"
+msgstr ""
+
+#: tform3.menuitem9.caption
+msgid "LQFP144"
+msgstr ""
+
+#: tform3.panel1.caption
+msgid "0"
+msgstr ""
+
+#: tform5.caption
+msgid "Warning"
+msgstr ""
+
+#: tform6.caption
+msgid "Enter Name"
+msgstr ""
+
+#: tform6.label1.caption
+msgid "Message:"
+msgstr ""
+
+#: unit1.caption11
+msgid "Only available for *Single* component in schematic libraries file."
+msgstr ""
+
+#: unit1.caption12
+msgid "Nothing to save."
+msgstr ""
+
+#: unit6.caption61
+msgid "Please enter component name (= lib file name.)"
+msgstr ""

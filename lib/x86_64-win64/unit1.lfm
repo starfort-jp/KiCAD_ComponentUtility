@@ -5,7 +5,7 @@ object Form1: TForm1
   Width = 505
   Align = alClient
   BorderStyle = bsSingle
-  Caption = 'KiCAD_LIB<>CSV Converter'
+  Caption = 'KiCad_LIB<>CSV Converter'
   ClientHeight = 500
   ClientWidth = 505
   Icon.Data = {
@@ -853,10 +853,5 @@ object Form1: TForm1
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
     left = 384
     top = 48
-  end
-  object MemDataset1: TMemDataset
-    FieldDefs = <>
-    left = 384
-    top = 104
   end
 end

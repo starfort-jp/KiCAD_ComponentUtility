@@ -1,3 +1,11 @@
+//------------------------------------------------------------------------------
+// title      : KiCad_LIB<>CSV Converter
+// revision   : 0.3.1.25
+// issue date : Jun.17, 2016
+// author     : Starfort, (c) 2015-2016
+// e-mail     : starfort@nifty.com
+//------------------------------------------------------------------------------
+
 program project1;
 
 {$mode objfpc}{$H+}
@@ -8,7 +16,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, Unit1, classes, sysutils, IniFiles, Graphics, LCLTranslator,
-  csvdocument_package, lazcontrols, memdslaz, Unit2, Unit3
+  csvdocument_package, lazcontrols, memdslaz, Unit2, Unit3, Unit4, Unit5
   { you can add units after this };
 
 {$R *.res}
@@ -40,13 +48,13 @@ begin
     xItemBodyColor := xIni.ReadString(xINIT_SECTION, 'ItemBodyColor', 'clBlack');
     xItemPinColor := xIni.ReadString(xINIT_SECTION, 'ItemPinColor', 'clBlack');
     xItemEtypeColors[1] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors1', 'clAqua');
-    xItemEtypeColors[2] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors2', 'clFuchsia');
-    xItemEtypeColors[3] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors3', 'clLime');
+    xItemEtypeColors[2] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors2', 'clLime');
+    xItemEtypeColors[3] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors3', 'clYellow');
     xItemEtypeColors[4] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors4', 'clGreen');
     xItemEtypeColors[5] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors5', 'clBlack');
     xItemEtypeColors[6] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors6', 'clGray');
     xItemEtypeColors[7] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors7', 'clRed');
-    xItemEtypeColors[8] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors8', 'clMaroon');
+    xItemEtypeColors[8] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors8', 'clFuchsia');
     xItemEtypeColors[9] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors9', 'clTeal');
     xItemEtypeColors[10] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors10', 'clOlive');
     xItemEtypeColors[11] := xIni.ReadString(xINIT_SECTION, 'ItemEtypeColors11', 'clSilver');
@@ -74,7 +82,7 @@ begin
     xIni.Free;  // After INI file was used, must release to prevent memory leaks
   end;
 //---
-  Application.Title:='KiCAD_Lib<>CSV Converter';
+  Application.Title:='KiCad_Lib<>CSV Converter';
   RequireDerivedFormResource:=True;
   Application.Initialize;
   SetDefaultLang('', '', false);
@@ -82,6 +90,7 @@ begin
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TForm5, Form5);
   Application.Run;
 end.
 

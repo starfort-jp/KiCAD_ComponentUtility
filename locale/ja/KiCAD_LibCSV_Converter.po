@@ -1,0 +1,186 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: KiCad_LibSCV_Converter\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: starfort <starfort@nifty.com>\n"
+"Language-Team: starfort_jp <starfort@nifty.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"X-Generator: Poedit 1.8.8\n"
+
+#: tform1.bitbtn1.caption
+msgid "OPEN"
+msgstr "開く"
+
+#: tform1.bitbtn2.caption
+msgid "SAVE"
+msgstr "保存"
+
+#: tform1.bitbtn3.caption
+msgid "-> CSV"
+msgstr "CSV へ変換"
+
+#: tform1.bitbtn4.caption
+msgid "-> LIB"
+msgstr "LIB へ変換"
+
+#: tform1.bitbtn5.caption
+msgid "Options"
+msgstr "オプション:"
+
+#: tform1.bitbtn6.caption
+msgid "CLEAR"
+msgstr "消去"
+
+#: tform1.bitbtn7.caption
+msgid "VIEW"
+msgstr "図形表示"
+
+#: tform1.caption
+msgid "KiCad_LIB<>CSV Converter"
+msgstr "KiCad_LIB<>CSV コンバータ"
+
+#: tform2.bitbtn1.caption
+msgid "Default"
+msgstr "既定値"
+
+#: tform2.bitbtn2.caption
+msgid "Cancel"
+msgstr "取消"
+
+#: tform2.bitbtn3.caption
+msgid "OK"
+msgstr "OK"
+
+#: tform2.caption
+msgid "Setting Option"
+msgstr "オプションの設定"
+
+#: tform2.combobox2.text
+msgid "INPUT"
+msgstr "入力"
+
+#: tform2.groupbox1.caption
+msgid "GENERAL"
+msgstr "一般"
+
+#: tform2.groupbox2.caption
+msgid "GRAPHICS"
+msgstr "グラフィック"
+
+#: tform2.label1.caption
+msgid "Default Language"
+msgstr "既定の言語"
+
+#: tform2.label2.caption
+msgid "Text Color - Default"
+msgstr "テキスト色 - 既定値"
+
+#: tform2.label3.caption
+msgid "Text Color - Highlight"
+msgstr "テキスト色 - ハイライト"
+
+#: tform2.label4.caption
+msgid "Background Color"
+msgstr "背景色"
+
+#: tform2.label5.caption
+msgid "Grid Color"
+msgstr "グリッド線の色"
+
+#: tform2.label6.caption
+msgid "Center Line Color"
+msgstr "中心線の色"
+
+#: tform2.label7.caption
+msgid "Item Body Color"
+msgstr "部品外形線の色"
+
+#: tform2.label8.caption
+msgid "Item Pin Color"
+msgstr "部品のピンの色"
+
+#: tform3.caption
+msgid "Graphic Display"
+msgstr "グラフィック表示"
+
+#: tform3.menuitem1.caption
+msgid "Reset Size"
+msgstr "サイズをリセット"
+
+#: tform3.menuitem10.caption
+msgid "LQFP208"
+msgstr "LQFP208"
+
+#: tform3.menuitem11.caption
+msgctxt "TFORM3.MENUITEM11.CAPTION"
+msgid "-"
+msgstr "-"
+
+#: tform3.menuitem12.caption
+msgid "Set Name"
+msgstr "名前の設定"
+
+#: tform3.menuitem2.caption
+msgctxt "tform3.menuitem2.caption"
+msgid "-"
+msgstr "-"
+
+#: tform3.menuitem3.caption
+msgid "Create"
+msgstr "作成"
+
+#: tform3.menuitem4.caption
+msgid "LQFP44"
+msgstr "LQFP44"
+
+#: tform3.menuitem5.caption
+msgid "LQFP48"
+msgstr "LQFP48"
+
+#: tform3.menuitem6.caption
+msgid "LQFP64"
+msgstr "LQFP64"
+
+#: tform3.menuitem7.caption
+msgid "LQFP80"
+msgstr "LQFP80"
+
+#: tform3.menuitem8.caption
+msgid "LQFP100"
+msgstr "LQFP100"
+
+#: tform3.menuitem9.caption
+msgid "LQFP144"
+msgstr "LQFP144"
+
+#: tform3.panel1.caption
+msgid "0"
+msgstr "0"
+
+#: tform5.caption
+msgid "Warning"
+msgstr "警告"
+
+#: tform6.caption
+msgid "Enter Name"
+msgstr "名前を入力"
+
+#: tform6.label1.caption
+msgid "Message:"
+msgstr "メッセージ"
+
+#: unit1.caption11
+msgid "Only available for *Single* component in schematic libraries file."
+msgstr "この機能は単一の部品しか持たないライブラリ ファイルでのみ有効です。"
+
+#: unit1.caption12
+msgid "Nothing to save."
+msgstr "保存するものがありません。"
+
+#: unit6.caption61
+msgid "Please enter component name (= lib file name.)"
+msgstr "コンポーネント名（=ライブラリ・ファイル名）を入力してください。"
