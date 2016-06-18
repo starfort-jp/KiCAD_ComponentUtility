@@ -1,8 +1,9 @@
 object Form5: TForm5
-  Left = 256
+  Left = 320
   Height = 86
-  Top = 168
+  Top = 188
   Width = 371
+  BorderStyle = bsSingle
   Caption = 'Warning'
   ClientHeight = 86
   ClientWidth = 371

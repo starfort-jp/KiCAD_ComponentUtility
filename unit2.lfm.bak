@@ -3,6 +3,7 @@ object Form2: TForm2
   Height = 423
   Top = 129
   Width = 265
+  BorderStyle = bsSingle
   Caption = 'Setting Option'
   ClientHeight = 423
   ClientWidth = 265
@@ -49,8 +50,8 @@ object Form2: TForm2
       Left = 8
       Height = 15
       Top = 8
-      Width = 93
-      Caption = 'Default Language'
+      Width = 52
+      Caption = 'Language'
       ParentColor = False
     end
     object Label2: TLabel

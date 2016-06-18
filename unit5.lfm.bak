@@ -1,7 +1,7 @@
 object Form5: TForm5
-  Left = 256
+  Left = 320
   Height = 86
-  Top = 168
+  Top = 188
   Width = 371
   Caption = 'Warning'
   ClientHeight = 86
@@ -21,10 +21,9 @@ object Form5: TForm5
   end
   object Label1: TLabel
     Left = 16
-    Height = 15
+    Height = 1
     Top = 16
-    Width = 34
-    Caption = 'Label1'
+    Width = 1
     ParentColor = False
   end
 end

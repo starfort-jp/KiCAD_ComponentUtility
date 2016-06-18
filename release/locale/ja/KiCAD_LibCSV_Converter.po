@@ -72,8 +72,8 @@ msgid "GRAPHICS"
 msgstr "グラフィック"
 
 #: tform2.label1.caption
-msgid "Default Language"
-msgstr "既定の言語"
+msgid "Language"
+msgstr "言語"
 
 #: tform2.label2.caption
 msgid "Text Color - Default"

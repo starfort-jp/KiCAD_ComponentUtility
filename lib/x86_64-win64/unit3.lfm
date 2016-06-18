@@ -1,12 +1,13 @@
 object Form3: TForm3
-  Left = 557
+  Left = 498
   Height = 1002
-  Top = 79
+  Top = 61
   Width = 1279
   Caption = 'Graphic Display'
   ClientHeight = 1002
   ClientWidth = 1279
   OnClose = FormClose
+  OnResize = FormResize
   OnShow = FormShow
   LCLVersion = '1.6.0.4'
   object Panel1: TPanel

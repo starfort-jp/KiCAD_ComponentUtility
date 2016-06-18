@@ -14,7 +14,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  PairSplitter, Grids, Menus, ftfont, LCLType;
+  PairSplitter, Grids, Menus, ftfont, LCLType, math;
 
 type
 
@@ -42,6 +42,7 @@ type
     StringGrid1: TStringGrid;
     StringGrid2: TStringGrid;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
     procedure MenuItem12Click(Sender: TObject);
@@ -58,6 +59,7 @@ type
     { private declarations }
   public
     { public declarations }
+    xCreated: Boolean;
     xPins: Integer;
     cPoint: TPoint;
     xTop, xBottom, xLeft, xRight: Integer;
@@ -93,6 +95,7 @@ var
   xPoint: Array [0..1] of TPoint;
   n: Integer;
 begin
+    Image1.Canvas.Clear;
   //Draw Background
     Image1.Canvas.Brush.Color := xBackgroundColor;
     Image1.Canvas.Rectangle(Image1.Left, Image1.Top, Image1.Width, Image1.Height);
@@ -447,6 +450,10 @@ procedure TForm3.CreateDevice;
 var
   n: Integer;
 begin
+  xCreated := False;
+  Form3.Height := xFormHeight;
+  Form3.Width := xFormWidth;
+  xLibName := '~';
 //Prepare SpreadSheet
   StringGrid1.Clear;
   StringGrid2.Clear;
@@ -472,13 +479,20 @@ begin
     DrawPin('', n);
   end;
   Form6.Show;
+  xCreated := True;
 end;
 
 procedure TForm3.FormShow(Sender: TObject);
 begin
   xLibName := '~';
-  xFormHeight := Form3.Height;
-  xFormWidth := Form3.Width;
+  if (Form1.StringGrid1.RowCount > 1) and (Form1.StringGrid1.ColCount > 5) then
+  begin
+    xLibName := Form1.StringGrid1.Cells[1, 5];
+  end;
+  xFormHeight := 1002;
+  xFormWidth := 1279;
+  Form3.Height := xFormHeight;
+  Form3.Width := xFormWidth;
   cPoint.x := 500;
   cPoint.y := 500;
   xTop := 0;
@@ -487,6 +501,7 @@ begin
   xRight := 0;
   xPins := 0;
   InitScreen;
+  xCreated := True;
 end;
 
 procedure TForm3.MenuItem11Click(Sender: TObject);
@@ -551,12 +566,35 @@ begin
   Form1.ConvertToLIB;
   xFilePath := ExtractFilePath(Form1.Edit1.Text);
   Form1.Edit1.Text := xFilePath + xLibName + '.lib';
+  xLibName := '';
+  xCreated := False;
+end;
+
+procedure TForm3.FormResize(Sender: TObject);
+var
+  xWidth, xHeight: Integer;
+begin
+if xCreated = True then
+  begin
+    xWidth  := Form3.Width - 277;
+    xHeight := Form3.Height;
+    if xWidth > xHeight then
+    begin
+      Form3.Width := xHeight + 277;
+    end
+    else
+    begin
+      Form3.Height := xWidth;
+    end;
+  end;
 end;
 
 procedure TForm3.MenuItem1Click(Sender: TObject);
 begin
+  xCreated := False;
   Form3.Height := xFormHeight;
   Form3.Width := xFormWidth;
+  xCreated := True;
 end;
 
 procedure TForm3.MenuItem4Click(Sender: TObject);

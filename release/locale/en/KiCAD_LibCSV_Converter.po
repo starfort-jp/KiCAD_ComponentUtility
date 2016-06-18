@@ -72,7 +72,7 @@ msgid "GRAPHICS"
 msgstr ""
 
 #: tform2.label1.caption
-msgid "Default Language"
+msgid "Language"
 msgstr ""
 
 #: tform2.label2.caption

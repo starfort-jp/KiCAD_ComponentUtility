@@ -52,6 +52,7 @@ type
     xExt: String;
     procedure MarkLines(xLineItem: TLineItem);
     procedure DisplayRichMemo(xLineItem: TLineItem);
+    procedure LoadFromRichMemo;
     procedure ConvertToCSV;
     procedure ConvertToLIB;
   end;
@@ -62,7 +63,8 @@ var
   xDefaultColor, xHiliteColor: TColor;
 
 resourcestring
-    Caption1 = 'Only available for *Single* component in schematic libraries file.';
+  Caption11 = 'Only available for *Single* component in schematic libraries file.';
+  Caption12 = 'Nothing to save.';
 
 implementation
 
@@ -227,12 +229,24 @@ begin
 //---
 end;
 
+procedure TForm1.LoadFromRichMemo;
+var
+  n: Integer;
+begin
+  xMemoStringList.Clear;
+  for n := 0 to (RichMemo1.Lines.Count - 1) do
+  begin
+    xMemoStringList.Add(RichMemo1.Lines[n]);
+  end;
+end;
+
 procedure TForm1.ConvertToCSV;
 var
   xLineNumber, xLp, xChNumber, xCp: Integer;
   xOldString, xNewString, xString, xCh, xPre, xSuf: String;
   xException: Boolean;
 begin
+  LoadFromRichMemo;
 //Convert To CSV
   MarkLines(lxMemo);  //Mark keeping displayed lines as 'False'
   xCSVStringList.Clear;
@@ -282,6 +296,7 @@ var
   xOldString, xNewString, xString, xCh: String;
   xException: Boolean;
 begin
+  LoadFromRichMemo;
 //Convert To KiCAD LIB
   MarkLines(lxMemo);  //Mark keeping displayed lines as 'False'
   xLIBStringList.Clear;
@@ -404,7 +419,8 @@ begin
   end
   else
   begin
-    ShowMessage('Warning: Nothing to save.');
+    Form5.Label1.Caption := Caption12;
+    Form5.Show;
   end;
 end;
 
@@ -557,7 +573,7 @@ begin
   begin
     StringGrid1.Clear;  // Reset the grid:
     StringGrid1.Visible := False;
-    Form5.Label1.Caption := Caption1;
+    Form5.Label1.Caption := Caption11;
     Form5.Show;
   end;
 //---
