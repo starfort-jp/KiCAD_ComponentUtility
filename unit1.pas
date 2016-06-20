@@ -52,6 +52,7 @@ type
     xExt: String;
     procedure MarkLines(xLineItem: TLineItem);
     procedure DisplayRichMemo(xLineItem: TLineItem);
+    procedure LoadFromRichMemo;
     procedure ConvertToCSV;
     procedure ConvertToLIB;
   end;
@@ -230,12 +231,25 @@ begin
 //---
 end;
 
+procedure TForm1.LoadFromRichMemo;
+var
+  n: Integer;
+begin
+  xMemoStringList.Clear;
+  for n := 0 to (RichMemo1.Lines.Count - 1) do
+  begin
+    xMemoStringList.Add(RichMemo1.Lines[n]);
+  end;
+end;
+
+
 procedure TForm1.ConvertToCSV;
 var
   xLineNumber, xLp, xChNumber, xCp: Integer;
   xOldString, xNewString, xString, xCh, xPre, xSuf: String;
   xException: Boolean;
 begin
+  LoadFromRichMemo;
 //Convert To CSV
   MarkLines(lxMemo);  //Mark keeping displayed lines as 'False'
   xCSVStringList.Clear;
@@ -285,6 +299,7 @@ var
   xOldString, xNewString, xString, xCh: String;
   xException: Boolean;
 begin
+  LoadFromRichMemo;
 //Convert To KiCAD LIB
   MarkLines(lxMemo);  //Mark keeping displayed lines as 'False'
   xLIBStringList.Clear;

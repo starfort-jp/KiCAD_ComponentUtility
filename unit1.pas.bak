@@ -242,13 +242,14 @@ begin
   end;
 end;
 
+
 procedure TForm1.ConvertToCSV;
 var
   xLineNumber, xLp, xChNumber, xCp: Integer;
   xOldString, xNewString, xString, xCh, xPre, xSuf: String;
   xException: Boolean;
 begin
-//  LoadFromRichMemo;
+  LoadFromRichMemo;
 //Convert To CSV
   MarkLines(lxMemo);  //Mark keeping displayed lines as 'False'
   xCSVStringList.Clear;
@@ -298,7 +299,7 @@ var
   xOldString, xNewString, xString, xCh: String;
   xException: Boolean;
 begin
-//  LoadFromRichMemo;
+  LoadFromRichMemo;
 //Convert To KiCAD LIB
   MarkLines(lxMemo);  //Mark keeping displayed lines as 'False'
   xLIBStringList.Clear;

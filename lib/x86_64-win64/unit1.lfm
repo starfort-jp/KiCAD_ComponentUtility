@@ -1,13 +1,13 @@
 object Form1: TForm1
-  Left = 260
+  Left = 262
   Height = 500
-  Top = 128
-  Width = 505
+  Top = 134
+  Width = 585
   Align = alClient
   BorderStyle = bsSingle
   Caption = 'KiCad_LIB<>CSV Converter'
   ClientHeight = 500
-  ClientWidth = 505
+  ClientWidth = 585
   Icon.Data = {
     3E32000000000100010040400000010018002832000016000000280000004000
     0000800000000100180000000000003200000000000000000000000000000000
@@ -417,14 +417,14 @@ object Form1: TForm1
   OnShow = FormShow
   LCLVersion = '1.6.0.4'
   object Edit1: TEdit
-    Left = 1
+    Left = 8
     Height = 23
     Top = 1
-    Width = 416
+    Width = 488
     TabOrder = 0
   end
   object BitBtn1: TBitBtn
-    Left = 425
+    Left = 504
     Height = 30
     Top = 1
     Width = 75
@@ -528,7 +528,7 @@ object Form1: TForm1
     TabOrder = 1
   end
   object BitBtn2: TBitBtn
-    Left = 425
+    Left = 504
     Height = 30
     Top = 40
     Width = 75
@@ -629,37 +629,37 @@ object Form1: TForm1
     TabOrder = 2
   end
   object BitBtn3: TBitBtn
-    Left = 425
+    Left = 504
     Height = 30
-    Top = 200
+    Top = 184
     Width = 75
     Caption = '-> CSV'
     OnClick = BitBtn3Click
     TabOrder = 3
   end
   object BitBtn4: TBitBtn
-    Left = 425
+    Left = 504
     Height = 30
-    Top = 240
+    Top = 224
     Width = 75
     Caption = '-> LIB'
     OnClick = BitBtn4Click
     TabOrder = 4
   end
   object RichMemo1: TRichMemo
-    Left = 1
+    Left = 8
     Height = 464
     Top = 32
-    Width = 416
+    Width = 488
     HideSelection = False
     ScrollBars = ssAutoBoth
     TabOrder = 5
     ZoomFactor = 1
   end
   object BitBtn5: TBitBtn
-    Left = 424
+    Left = 504
     Height = 30
-    Top = 424
+    Top = 416
     Width = 75
     Caption = 'Options'
     Glyph.Data = {
@@ -742,18 +742,18 @@ object Form1: TForm1
     TabOrder = 6
   end
   object BitBtn6: TBitBtn
-    Left = 424
+    Left = 504
     Height = 30
-    Top = 336
+    Top = 312
     Width = 75
     Caption = 'CLEAR'
     OnClick = BitBtn6Click
     TabOrder = 7
   end
   object BitBtn7: TBitBtn
-    Left = 424
+    Left = 504
     Height = 30
-    Top = 464
+    Top = 456
     Width = 75
     Caption = 'VIEW'
     Glyph.Data = {
@@ -836,10 +836,11 @@ object Form1: TForm1
     TabOrder = 8
   end
   object StringGrid1: TStringGrid
-    Left = 1
+    Left = 8
     Height = 462
     Top = 32
-    Width = 415
+    Width = 327
+    AutoEdit = False
     FixedCols = 0
     FixedRows = 0
     TabOrder = 9
