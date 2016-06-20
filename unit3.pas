@@ -517,7 +517,7 @@ end;
 procedure TForm3.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 var
   n, m, xMaxRow, xStart, xEnd: Integer;
-  xText: String;
+  xText, xString: String;
 //  xMemoryStream: TMemoryStream;
   xFilePath: String;
 begin
@@ -540,7 +540,9 @@ begin
   for n := 1 to xMaxRow do
   begin
     m := StrToInt(Form1.StringGrid1.Cells[2, xStart + 1 + n]);
-    Form1.StringGrid1.Cells[1, xStart + 1 + n] := StringGrid1.Cells[1, m];
+    xString := StringReplace(StringGrid1.Cells[1, m], '"', '', [rfReplaceAll, rfIgnoreCase]);
+    Form1.StringGrid1.Cells[1, xStart + 1 + n] := Trim(xString);
+//    Form1.StringGrid1.Cells[1, xStart + 1 + n] := StringGrid1.Cells[1, m];
     Form1.StringGrid1.Cells[Form1.StringGrid1.ColCount - 1, xStart + 1 + n] := StringGrid1.Cells[2, m];
     Form1.StringGrid1.Cells[3, xStart + 1 + n] := StringGrid2.Cells[1, m];
     Form1.StringGrid1.Cells[4, xStart + 1 + n] := StringGrid2.Cells[2, m];

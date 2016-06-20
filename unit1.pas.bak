@@ -178,6 +178,7 @@ procedure TForm1.DisplayRichMemo(xLineItem: TLineItem);
 var
   xLp, xLineNumber: Integer;
   a, b, c: Integer;
+  xString: String;
 begin
 //Draw RichMemo
 //Initialize---
@@ -217,7 +218,8 @@ begin
   xLineNumber := xMemoStringList.Count;
   for xLp := 0 to (xLineNumber - 1) do
   begin
-    RichMemo1.Lines.Add(xMemoStringList[xLp]);
+    xString := xMemoStringList[xLp];
+    RichMemo1.Lines.Add(xString);
     a := Length(RichMemo1.Lines.Text);
     b := Length(xMemoStringList[xLp]);
     c := (a - b) - 1;
@@ -246,7 +248,7 @@ var
   xOldString, xNewString, xString, xCh, xPre, xSuf: String;
   xException: Boolean;
 begin
-  LoadFromRichMemo;
+//  LoadFromRichMemo;
 //Convert To CSV
   MarkLines(lxMemo);  //Mark keeping displayed lines as 'False'
   xCSVStringList.Clear;
@@ -296,7 +298,7 @@ var
   xOldString, xNewString, xString, xCh: String;
   xException: Boolean;
 begin
-  LoadFromRichMemo;
+//  LoadFromRichMemo;
 //Convert To KiCAD LIB
   MarkLines(lxMemo);  //Mark keeping displayed lines as 'False'
   xLIBStringList.Clear;

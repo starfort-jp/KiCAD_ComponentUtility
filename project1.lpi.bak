@@ -20,7 +20,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="81"/>
+      <BuildNr Value="82"/>
       <Attributes pvaDebug="True"/>
       <StringTable Comments="for Debugging" CompanyName="Kikyo Shoji Ltd, Co." FileDescription="N/A" InternalName="KiCAD_LibUtil" LegalCopyright="(c)Starfort, 2015-2016" LegalTrademarks="Starfort (TM)" OriginalFilename="N/A" ProductName="T.B.D." ProductVersion="1.0.0.0"/>
     </VersionInfo>
@@ -138,9 +138,6 @@
       <SmallerCode Value="True"/>
     </CodeGeneration>
     <Linking>
-      <Debugging>
-        <GenerateDebugInfo Value="False"/>
-      </Debugging>
       <LinkSmart Value="True"/>
       <Options>
         <Win32>
