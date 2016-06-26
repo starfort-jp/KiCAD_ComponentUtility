@@ -294,7 +294,7 @@ begin
   Form1.StringGrid1.Cells[4, 6] := '60';
   Form1.StringGrid1.Cells[5, 6] := 'H';
   Form1.StringGrid1.Cells[6, 6] := 'V';
-  Form1.StringGrid1.Cells[7, 6] := 'L';
+  Form1.StringGrid1.Cells[7, 6] := 'C';
   Form1.StringGrid1.Cells[8, 6] := 'CNN';
 //---
   Form1.StringGrid1.Cells[0, 7] := 'F1';
@@ -308,8 +308,36 @@ begin
   Form1.StringGrid1.Cells[8, 7] := 'CNN';
 //---
   Form1.StringGrid1.Cells[0, 8] := 'F2';
+  Form1.StringGrid1.Cells[1, 8] := '""';
+  Form1.StringGrid1.Cells[2, 8] := '0';
+  Form1.StringGrid1.Cells[3, 8] := '0';
+  Form1.StringGrid1.Cells[4, 8] := '50';
+  Form1.StringGrid1.Cells[5, 8] := 'H';
+  Form1.StringGrid1.Cells[6, 8] := 'V';
+  Form1.StringGrid1.Cells[7, 8] := 'C';
+  Form1.StringGrid1.Cells[8, 8] := 'CNN';
+//---
   Form1.StringGrid1.Cells[0, 9] := 'F3';
+  Form1.StringGrid1.Cells[1, 9] := '""';
+  Form1.StringGrid1.Cells[2, 9] := '0';
+  Form1.StringGrid1.Cells[3, 9] := '0';
+  Form1.StringGrid1.Cells[4, 9] := '50';
+  Form1.StringGrid1.Cells[5, 9] := 'H';
+  Form1.StringGrid1.Cells[6, 9] := 'V';
+  Form1.StringGrid1.Cells[7, 9] := 'C';
+  Form1.StringGrid1.Cells[8, 9] := 'CNN';
+//---
   Form1.StringGrid1.Cells[0, 10] := 'F4';
+  Form1.StringGrid1.Cells[1, 10] := '""';
+  Form1.StringGrid1.Cells[2, 10] := '0';
+  Form1.StringGrid1.Cells[3, 10] := '0';
+  Form1.StringGrid1.Cells[4, 10] := '50';
+  Form1.StringGrid1.Cells[5, 10] := 'H';
+  Form1.StringGrid1.Cells[6, 10] := 'V';
+  Form1.StringGrid1.Cells[7, 10] := 'C';
+  Form1.StringGrid1.Cells[8, 10] := 'CNN';
+  Form1.StringGrid1.Cells[9, 10] := '"Part Number"';
+//---
   Form1.StringGrid1.Cells[0, 11] := '"$FPLIST"';
   Form1.StringGrid1.Cells[0, 12] := '" ?"';
   Form1.StringGrid1.Cells[0, 13] := '"$ENDFPLIST"';

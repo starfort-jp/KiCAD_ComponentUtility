@@ -14,7 +14,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  PairSplitter, Grids, Menus, ftfont, LCLType, math;
+  PairSplitter, Grids, Menus, ftfont, LCLType;
 
 type
 

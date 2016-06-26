@@ -13,8 +13,8 @@ unit Unit2;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, LvlGraphCtrl, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdCtrls, ColorBox, Buttons, Grids, FileCtrl, EditBtn, IniFiles;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
+  ExtCtrls, StdCtrls, ColorBox, Buttons, IniFiles;
 type
   { TForm2 }
   TForm2 = class(TForm)
@@ -76,7 +76,7 @@ const
 procedure TForm2.FormShow(Sender: TObject);
 var
   n: Integer;
-  xSearchDir, xCountryName, xCountryCode: String;
+  xSearchDir, xCountryName: String;
   xRec: TSearchRec;
   xCount: integer;
 begin
@@ -105,7 +105,6 @@ begin
     xCountryName := Unit4.GetCountryString(xFileStringList[n - 1]);
     if xCountryName <> '' then
     begin
-      xCountryCode := Unit4.GetCodeString(xCountryName);
       ComboBox1.Items.Add(xCountryName);
     end;
   end;

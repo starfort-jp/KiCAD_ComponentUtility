@@ -196,7 +196,7 @@ object Form2: TForm2
         'INPUT'
         'OUTPUT'
         'BI-DIRECTION'
-        'TRY-STATE'
+        'TRI-STATE'
         'PASSIVE'
         'UNSPECIFIED'
         'POWER INPUT'

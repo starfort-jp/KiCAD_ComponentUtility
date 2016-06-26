@@ -243,6 +243,8 @@ var
 begin
   StartPosX := StrToInt(PosX);
   StartPosY := StrToInt(PosY);
+  EndPosX := StartPosX;
+  EndPosY := StartPosY;
   yLen := StrToInt(xLen);
   case xDir of
     'U': begin
