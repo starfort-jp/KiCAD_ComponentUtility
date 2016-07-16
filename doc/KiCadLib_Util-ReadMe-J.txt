@@ -1,7 +1,7 @@
 <<KiCAD_ComponentUtility>>
 
 revision   : 0.3.2.1
-issue date : Jul.10, 2016
+issue date : Jul.15, 2016
 author     : Starfort, (c) 2015-2016
 e-mail     : starfort@nifty.com
 
